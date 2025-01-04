@@ -6,3 +6,5 @@ pluginManagement {
         kotlin("jvm") version kotlinVersion
     }
 }
+
+include("hw1")
