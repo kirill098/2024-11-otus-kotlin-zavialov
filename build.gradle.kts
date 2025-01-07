@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") apply false
 }
 
-group = "ru.otus.kotlin.zavialov.202411"
+group = "ru.otus.kotlin.zavialov"
 version = "1.0-SNAPSHOT"
 
 repositories {
