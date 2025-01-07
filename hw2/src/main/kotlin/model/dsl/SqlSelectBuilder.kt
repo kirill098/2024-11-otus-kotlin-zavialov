@@ -4,16 +4,16 @@ import model.SqlSelect
 
 @SqlSelectDsl
 class SqlSelectBuilder {
-    private var fields: String = "*"
-    private var table: String = ""
+    private var select: String = "select *"
+    private var from: String = ""
     private var where: String = ""
 
     fun select(vararg fields: String) {
-        this.fields = fields.joinToString()
+        this.select = "select ${fields.joinToString()}"
     }
 
     fun from(table: String) {
-        this.table = table
+        this.from = " from $table"
     }
 
     fun where(block: WhereContext.() -> Unit) {
@@ -22,12 +22,12 @@ class SqlSelectBuilder {
     }
 
     fun build(): String {
-        if (table.isNullOrBlank()) {
+        if (from.isNullOrBlank()) {
             throw IllegalArgumentException("Table name not filled")
         }
         return SqlSelect(
-            fields = fields,
-            table = table,
+            select = select,
+            from = from,
             where = where
         ).toString()
     }
